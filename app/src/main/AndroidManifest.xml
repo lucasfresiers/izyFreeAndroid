@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Authent" />
-        <activity android:name=".Compte"></activity>
+        <activity android:name=".Compte" />
+        <activity android:name=".Welcome"></activity>
     </application>
 
 </manifest>
