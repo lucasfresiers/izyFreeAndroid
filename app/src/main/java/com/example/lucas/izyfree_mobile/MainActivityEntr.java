@@ -1,21 +1,18 @@
 package com.example.lucas.izyfree_mobile;
 
+/**
+ * Created by bertins on 22/03/18.
+ */
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
-/*
-curl -XPOST -H "Content-type: application/json" -d '{"name":"a","nomContact":"b","prenomContact":"c","password":"d","tel":"e","email":"f","id":"1","photo":"g"}' http://localhost:8080/v1/entreprise
-curl -i -X DELETE http://localhost:8080/v1/entreprise/6
 
-
- */
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivityEntr extends AppCompatActivity {
 
     private TextView mTextMessage;
 
@@ -25,13 +22,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
+                case R.id.navigationEntr_home:
                     return true;
-                case R.id.navigation_rechercher:
-                    onRechercher();
+                case R.id.navigationEntr_rechercher:
+                    // onRechercherEntr();
                     return true;
-                case R.id.navigation_compte:
-                    onCompte();
+                case R.id.navigationEntr_compte:
+                    onCompteEntr();
                     return true;
             }
             return false;
@@ -47,18 +44,17 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-
-    }
-    private void onCompte(){
-        Intent i=new Intent(this, Compte.class);
-        startActivity(i);
     }
 
-    private void onRechercher(){
-        Intent intent=new Intent(this, Rechercher.class);
+    private void onCompteEntr(){
+        Intent intent=new Intent(this, CompteEntr.class);
         startActivity(intent);
     }
 
+/*    private void onRechercherEntr(){
+        Intent intent=new Intent(this, RechercherEntr.class);
+        startActivity(intent);
+    }*/
 
 
 

@@ -16,8 +16,8 @@
         android:theme="@style/AppTheme"
         android:name="com.example.lucas.izyfree_mobile.AppController">
         <activity
-            android:name=".Authent"
-            android:label="@string/app_name" >
+            android:name=".MainActivityEntr"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,6 +27,8 @@
         <activity android:name=".Welcome" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Compte" />
+        <activity android:name=".CompteEntr" />
+        <activity android:name=".Rechercher"></activity>
     </application>
 
 </manifest>
