@@ -1,29 +1,29 @@
 package com.example.lucas.izyfree_mobile;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Authent extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_authent);
-        Intent intent = getIntent();
-        // On suppose que tu as mis un String dans l'Intent via le putExtra()
-        String value = intent.getStringExtra("chaine");
-
-    }
-
-    // json object response url
-    private String urlJsonObj = "http://10.0.2.2:8080/v1/user";
-
-    // json array response url
-    private String urlJsonArry =  "http://10.0.2.2:8080/v1/user";
-
     private static String TAG = MainActivity.class.getSimpleName();
-    private Button btnMakeObjectRequest, btnMakeArrayRequest;
+
 
     // Progress dialog
     private ProgressDialog pDialog;
@@ -32,40 +32,27 @@ public class Authent extends AppCompatActivity {
 
     // temporary string to show the parsed response
     private String jsonResponse;
+    // json object response url
+    private String urlJsonObj = "http://10.0.2.2:8080/v1/entreprise";
+
+    // json array response url
+    private String urlJsonArry =  "http://10.0.2.2:8080/v1/entreprise";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-/*
-        btnMakeObjectRequest = (Button) findViewById(R.id.btnObjRequest);
-        btnMakeArrayRequest = (Button) findViewById(R.id.btnArrayRequest);
-        txtResponse = (TextView) findViewById(R.id.txtResponse);
-*/
-/*
-        pDialog = new ProgressDialog(this);
-        pDialog.setMessage("Please wait...");
-        pDialog.setCancelable(false);
-
-        btnMakeObjectRequest.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // making json object request
-                makeJsonObjectRequest();
-            }
-        });
-
-        btnMakeArrayRequest.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // making json array request
-                makeJsonArrayRequest();
-            }
-        });
-*/
+        setContentView(R.layout.activity_authent);
+        Intent intent = getIntent();
+        // On suppose que tu as mis un String dans l'Intent via le putExtra()
+        String value = intent.getStringExtra("profil");
     }
+
+    public void onClickConnect (View view) {
+        makeJsonArrayRequest();
+        TextView mdp = findViewById(R.id.mdp);
+        mdp.setText(jsonResponse);
+    }
+
 
     /**
      * Method to make json object request where json response starts wtih {
@@ -74,7 +61,7 @@ public class Authent extends AppCompatActivity {
 
         showpDialog();
 
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Method.GET,
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
                 urlJsonObj, null, new Response.Listener<JSONObject>() {
 
             @Override

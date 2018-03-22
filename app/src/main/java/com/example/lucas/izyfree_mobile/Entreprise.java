@@ -8,7 +8,6 @@ import java.security.Principal;
 import java.security.SecureRandom;
 
 public class Entreprise {
-    private static Entreprise anonymous = new Entreprise(-1, "Anonymous", "anonym");
     private String name;
     private String nomContact;
     private String prenomContact;
@@ -26,7 +25,10 @@ public class Entreprise {
         this.name = nom;
     }
 
-    public Entreprise(int id, String nom, String nomContact) {
+    public Entreprise(int id, String nom, String nomContact,String email, String prenomContact,String tel) {
+        this.email = email;
+        this.prenomContact = prenomContact;
+        this.tel = tel;
         this.id = id;
         this.name = nom;
         this.nomContact = nomContact;
@@ -51,9 +53,6 @@ public class Entreprise {
         this.prenomContact = prenomContact;
     }
 
-    public static Entreprise getAnonymousUser() {
-        return anonymous;
-    }
 
     public String getEmail() {
         return email;
@@ -117,13 +116,6 @@ public class Entreprise {
         this.salt = salt;
     }
 
-    public boolean isInUserGroup() {
-        return !(id == anonymous.getId());
-    }
-
-    public boolean isAnonymous() {
-        return this.getId() == getAnonymousUser().getId();
-    }
 
     public String getSearch() {
         search = name + ":" + nomContact + "->" + email;
