@@ -8,6 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+/*
+curl -XPOST -H "Content-type: application/json" -d '{"name":"a","nomContact":"b","prenomContact":"c","password":"d","tel":"e","email":"f","id":"1","photo":"g"}' http://localhost:8080/v1/entreprise
+curl -i -X DELETE http://localhost:8080/v1/entreprise/6
+
+
+ */
 
 public class MainActivity extends AppCompatActivity {
 
