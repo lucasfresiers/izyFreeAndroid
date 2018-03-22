@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,16 +28,14 @@ public class Authent extends AppCompatActivity {
 
     // Progress dialog
     private ProgressDialog pDialog;
+    private Button connect;
 
-    private TextView txtResponse;
-
+    TextView  mdp;
     // temporary string to show the parsed response
     private String jsonResponse;
     // json object response url
-    private String urlJsonObj = "http://10.0.2.2:8080/v1/entreprise";
 
-    // json array response url
-    private String urlJsonArry =  "http://10.0.2.2:8080/v1/entreprise";
+    private String urlJsonObj = "http://10.0.2.2:8080/v1/entreprise/a";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +44,24 @@ public class Authent extends AppCompatActivity {
         Intent intent = getIntent();
         // On suppose que tu as mis un String dans l'Intent via le putExtra()
         String value = intent.getStringExtra("profil");
+        mdp = findViewById(R.id.mdp);
+        connect = findViewById(R.id.connect);
+
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("Please wait...");
+        pDialog.setCancelable(false);
+
+
+        connect.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // making json object request
+                makeJsonObjectRequest();
+            }
+        });
     }
 
-    public void onClickConnect (View view) {
-        makeJsonArrayRequest();
-        TextView mdp = findViewById(R.id.mdp);
-        mdp.setText(jsonResponse);
-    }
 
 
     /**
@@ -71,14 +81,16 @@ public class Authent extends AppCompatActivity {
                 try {
                     // Parsing json object response
                     // response will be a json object
-                    int id = response.getInt("id");
-                    String name = response.getString("name");
+                    String name = response.getString("nom");
+                    String email = response.getString("email");
+                    String tel = response.getString("tel");
 
                     jsonResponse = "";
                     jsonResponse += "Name: " + name + "\n\n";
-                    jsonResponse += "id: " + id + "\n\n";
+                    jsonResponse += "Email: " + email + "\n\n";
+                    jsonResponse += "Home: " + tel + "\n\n";
 
-                    txtResponse.setText(jsonResponse);
+                   mdp.setText(jsonResponse);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -101,64 +113,10 @@ public class Authent extends AppCompatActivity {
         });
 
         // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(jsonObjReq);
+        AppController a =  AppController.getInstance();
+        a.addToRequestQueue(jsonObjReq);
     }
 
-    /**
-     * Method to make json array request where response starts with [
-     * */
-    private void makeJsonArrayRequest() {
-
-        showpDialog();
-
-        JsonArrayRequest req = new JsonArrayRequest(urlJsonArry,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.d(TAG, response.toString());
-
-                        try {
-                            // Parsing json array response
-                            // loop through each json object
-                            jsonResponse = "";
-                            for (int i = 0; i < response.length(); i++) {
-
-                                JSONObject person = (JSONObject) response
-                                        .get(i);
-
-                                String name = person.getString("name");
-                                int id = person.getInt("id");
-
-                                jsonResponse = "";
-                                jsonResponse += "Name: " + name + "\n\n";
-                                jsonResponse += "id: " + id + "\n\n";
-
-                            }
-
-                            txtResponse.setText(jsonResponse);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(getApplicationContext(),
-                                    "Error: " + e.getMessage(),
-                                    Toast.LENGTH_LONG).show();
-                        }
-
-                        hidepDialog();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_SHORT).show();
-                hidepDialog();
-            }
-        });
-
-        // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(req);
-    }
 
     private void showpDialog() {
         if (!pDialog.isShowing())
