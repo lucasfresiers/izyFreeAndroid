@@ -20,13 +20,11 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+
                     return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                case R.id.navigation_rechercher:
                     return true;
                 case R.id.navigation_compte:
-                    mTextMessage.setText(R.string.title_compte);
                     onCompte();
                     return true;
             }
@@ -49,5 +47,6 @@ public class MainActivity extends AppCompatActivity {
         Intent i=new Intent(this, Compte.class);
         startActivity(i);
     }
+
 
 }

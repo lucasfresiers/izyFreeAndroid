@@ -63,7 +63,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="55dp"
         android:layout_marginTop="100dp"
-        android:text="TextView"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/nom"
         app:layout_constraintTop_toTopOf="parent" />
@@ -75,7 +75,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/prenom"
         app:layout_constraintTop_toBottomOf="@+id/resNom" />
@@ -87,7 +87,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/email"
         app:layout_constraintTop_toBottomOf="@+id/resPrenom" />
@@ -99,7 +99,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tel"
         app:layout_constraintTop_toBottomOf="@+id/resMail" />
@@ -111,7 +111,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/poste"
         app:layout_constraintTop_toBottomOf="@+id/resTel" />
