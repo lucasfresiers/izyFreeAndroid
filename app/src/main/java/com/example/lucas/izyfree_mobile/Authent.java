@@ -30,12 +30,15 @@ public class Authent extends AppCompatActivity {
     private ProgressDialog pDialog;
     private Button connect;
 
-    TextView  mdp;
+    TextView mdp;
+    TextView email;
+    boolean entrepriseValide = false;
     // temporary string to show the parsed response
     private String jsonResponse;
     // json object response url
 
     private String urlJsonObj = "http://10.0.2.2:8080/v1/entreprise/a";
+    private String urlJsonAllObj = "http://10.0.2.2:8080/v1/entreprise/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,7 @@ public class Authent extends AppCompatActivity {
         // On suppose que tu as mis un String dans l'Intent via le putExtra()
         String value = intent.getStringExtra("profil");
         mdp = findViewById(R.id.mdp);
+        email = findViewById(R.id.textEmail);
         connect = findViewById(R.id.connect);
 
         pDialog = new ProgressDialog(this);
@@ -57,16 +61,15 @@ public class Authent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // making json object request
-                makeJsonObjectRequest();
+                makeJsonArrayRequest();
             }
         });
     }
 
 
-
     /**
      * Method to make json object request where json response starts wtih {
-     * */
+     */
     private void makeJsonObjectRequest() {
 
         showpDialog();
@@ -85,12 +88,8 @@ public class Authent extends AppCompatActivity {
                     String email = response.getString("email");
                     String tel = response.getString("tel");
 
-                    jsonResponse = "";
-                    jsonResponse += "Name: " + name + "\n\n";
-                    jsonResponse += "Email: " + email + "\n\n";
-                    jsonResponse += "Home: " + tel + "\n\n";
 
-                   mdp.setText(jsonResponse);
+                    mdp.setText(jsonResponse);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -113,8 +112,73 @@ public class Authent extends AppCompatActivity {
         });
 
         // Adding request to request queue
-        AppController a =  AppController.getInstance();
+        AppController a = AppController.getInstance();
         a.addToRequestQueue(jsonObjReq);
+    }
+
+    private void makeJsonArrayRequest() {
+
+        showpDialog();
+
+        JsonArrayRequest req = new JsonArrayRequest(urlJsonAllObj,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d(TAG, response.toString());
+
+                        try {
+                            // Parsing json array response
+                            // loop through each json object
+                            jsonResponse = "";
+                            for (int i = 0; i < response.length(); i++) {
+
+                                JSONObject entreprise = (JSONObject) response
+                                        .get(i);
+
+                                Entreprise e = new Entreprise();
+
+                                e.setId(entreprise.getInt("id"));
+                                e.setEmail(entreprise.getString("email"));
+                                e.setName(entreprise.getString("nom"));
+                                e.setTel(entreprise.getString("tel"));
+
+/*
+                                jsonResponse = "";
+                                jsonResponse += "Name: " + name + "\n\n";
+                                jsonResponse += "Email: " + email + "\n\n";
+                                jsonResponse += "Home: " + tel + "\n\n";
+
+*/
+                                if (e.getEmail().equals(email.getText())) {
+                                    entrepriseValide = true;
+                                }
+                            }
+                            if (entrepriseValide) {
+                                mdp.setText("OKKKKK");
+                            }
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(),
+                                    "Error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+
+                        hidepDialog();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_SHORT).show();
+                hidepDialog();
+            }
+        });
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(req);
     }
 
 

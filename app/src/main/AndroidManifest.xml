@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme"
         android:name="com.example.lucas.izyfree_mobile.AppController">
         <activity
-            android:name=".MainActivityEntr"
+            android:name=".Authent"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="MainActivityEntr" />
         <activity android:name=".Welcome" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Compte" />
