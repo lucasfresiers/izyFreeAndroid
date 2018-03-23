@@ -9,7 +9,7 @@
     <item
         android:id="@+id/navigationEntr_rechercher"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_rechercher"/>
+        android:title="@string/title_candidatures"/>
 
     <item
         android:id="@+id/navigationEntr_compte"

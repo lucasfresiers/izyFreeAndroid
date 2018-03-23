@@ -2,12 +2,13 @@ package com.example.lucas.izyfree_mobile;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
 
-public class Rechercher extends AppCompatActivity {
+public class Candidatures extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rechercher);
+        setContentView(R.layout.activity_candidatures);
     }
 }
