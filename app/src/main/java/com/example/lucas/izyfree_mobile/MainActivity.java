@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
     List<String> listContents;
 
 
+    Intent tmp;
+
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -137,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tmp = getIntent();
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -157,8 +161,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void onCompte() {
-        Intent i = new Intent(this, Compte.class);
+
+    private void onCompte(){
+        Intent i=new Intent(MainActivity.this, Compte.class);
+        final String nom = i.getStringExtra("nom");
+        final String tel = i.getStringExtra("tel");
+        final String mail = i.getStringExtra("mail");
+        i.putExtras(tmp.getExtras());
         startActivity(i);
     }
 

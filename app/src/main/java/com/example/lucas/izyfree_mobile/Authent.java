@@ -25,6 +25,11 @@ public class Authent extends AppCompatActivity {
 
     private static String TAG = MainActivity.class.getSimpleName();
 
+    // Intent intentFrelance = new Intent(this, MainActivity.class);
+   // Intent intentEntreprise = new Intent(this, MainActivityEntr.class);
+
+    Intent intentFrelance;
+
 
     // Progress dialog
     private ProgressDialog pDialog;
@@ -32,24 +37,29 @@ public class Authent extends AppCompatActivity {
 
     TextView mdp;
     TextView email;
+    TextView debug;
     boolean entrepriseValide = false;
+    boolean freelanceValide = false;
+
     // temporary string to show the parsed response
     private String jsonResponse;
     // json object response url
 
-    private String urlJsonObj = "http://10.0.2.2:8080/v1/entreprise/a";
-    private String urlJsonAllObj = "http://10.0.2.2:8080/v1/entreprise/";
+    private String urlJsonObj = "http://10.0.2.2:8080/v1/entreprise/";
+    private String urlJsonAllEntreprise = "http://10.0.2.2:8080/v1/entreprise/";
+    private String urlJsonAllFreelance = "http://10.0.2.2:8080/v1/freelance/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authent);
         Intent intent = getIntent();
-        // On suppose que tu as mis un String dans l'Intent via le putExtra()
-        String value = intent.getStringExtra("profil");
+        intentFrelance = new Intent(this, MainActivity.class);
+        final String value = intent.getStringExtra("profil");
         mdp = findViewById(R.id.mdp);
         email = findViewById(R.id.textEmail);
         connect = findViewById(R.id.connect);
+        debug = findViewById(R.id.debug);
 
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Please wait...");
@@ -61,7 +71,8 @@ public class Authent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // making json object request
-                makeJsonArrayRequest();
+                if (value.equals("entreprise")) makeJsonArrayRequestEntreprise();
+                if (value.equals("freelance")) makeJsonArrayRequestFreelance();
             }
         });
     }
@@ -116,11 +127,12 @@ public class Authent extends AppCompatActivity {
         a.addToRequestQueue(jsonObjReq);
     }
 
-    private void makeJsonArrayRequest() {
+    private void makeJsonArrayRequestEntreprise() {
 
         showpDialog();
 
-        JsonArrayRequest req = new JsonArrayRequest(urlJsonAllObj,
+
+        JsonArrayRequest req = new JsonArrayRequest(urlJsonAllEntreprise,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -136,25 +148,107 @@ public class Authent extends AppCompatActivity {
                                         .get(i);
 
                                 Entreprise e = new Entreprise();
+                                e.setEmail("");
 
-                                e.setId(entreprise.getInt("id"));
-                                e.setEmail(entreprise.getString("email"));
-                                e.setName(entreprise.getString("nom"));
-                                e.setTel(entreprise.getString("tel"));
+                                if (entreprise.has("id")) e.setId(entreprise.getInt("id"));
+                                if (entreprise.has("email")) e.setEmail(entreprise.getString("email"));
+                                if (entreprise.has("nom")) e.setName(entreprise.getString("nom"));
+                                if (entreprise.has("tel")) e.setTel(entreprise.getString("tel"));
 
-/*
+
+
                                 jsonResponse = "";
-                                jsonResponse += "Name: " + name + "\n\n";
-                                jsonResponse += "Email: " + email + "\n\n";
-                                jsonResponse += "Home: " + tel + "\n\n";
+                                jsonResponse += "Name: " + e.getName() + "\n\n";
+                                jsonResponse += "Email: " + e.getEmail() + "\n\n";
+                                jsonResponse += "Home: " + e.getTel() + "\n\n";
+                                debug.setText(jsonResponse);
 
-*/
-                                if (e.getEmail().equals(email.getText())) {
+
+                                if (e.getEmail().equals(email.getText().toString())) {
                                     entrepriseValide = true;
+                                    break;
                                 }
+
                             }
                             if (entrepriseValide) {
-                                mdp.setText("OKKKKK");
+                                launchWelcomeEntreprise();
+                            } else {
+                                debug.setText("Entreprise inconnu");
+                            }
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(),
+                                    "Error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+
+                        hidepDialog();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_SHORT).show();
+                hidepDialog();
+            }
+        });
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(req);
+    }
+
+    private void makeJsonArrayRequestFreelance() {
+
+        showpDialog();
+
+        JsonArrayRequest req = new JsonArrayRequest(urlJsonAllFreelance,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d(TAG, response.toString());
+
+                        try {
+                            // Parsing json array response
+                            // loop through each json object
+                            jsonResponse = "";
+                            for (int i = 0; i < response.length(); i++) {
+
+                                JSONObject freelance = (JSONObject) response
+                                        .get(i);
+
+                                Freelance f = new Freelance();
+                                f.setEmail("");
+
+                                if (freelance.has("id")) f.setId(freelance.getInt("id"));
+                                if (freelance.has("email")) f.setEmail(freelance.getString("email"));
+                                if (freelance.has("name")) f.setName(freelance.getString("name"));
+                                if (freelance.has("tel")) f.setPhone(freelance.getString("tel"));
+
+
+
+                                jsonResponse = "";
+                                jsonResponse += "Name: " + f.getName() + "\n\n";
+                                jsonResponse += "Email: " + f.getEmail() + "\n\n";
+                                jsonResponse += "Home: " + f.getPhone() + "\n\n";
+                                debug.setText(jsonResponse);
+
+
+                                if (f.getEmail().equals(email.getText().toString())) {
+                                    freelanceValide = true;
+                                    intentFrelance.putExtra("email",f.getEmail());
+
+                                    break;
+                                }
+
+                            }
+                            if (freelanceValide) {
+
+                                launchWelcomeFreelance();
+                            } else {
+                                debug.setText("Freelance inconnu");
                             }
 
 
@@ -190,5 +284,13 @@ public class Authent extends AppCompatActivity {
     private void hidepDialog() {
         if (pDialog.isShowing())
             pDialog.dismiss();
+    }
+
+    public void launchWelcomeEntreprise () {
+        //startActivity(intentEntreprise);
+    }
+
+    public void launchWelcomeFreelance (){
+        startActivity(intentFrelance);
     }
 }

@@ -38,10 +38,10 @@ public class MainActivityEntr extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_mainentr);
 
         mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigationEntr);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
     }
@@ -55,6 +55,8 @@ public class MainActivityEntr extends AppCompatActivity {
         Intent intent=new Intent(this, RechercherEntr.class);
         startActivity(intent);
     }*/
+
+
 
 
 
