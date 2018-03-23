@@ -1,6 +1,8 @@
 package com.example.lucas.izyfree_mobile;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +11,8 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -48,14 +52,9 @@ public class MainActivity extends AppCompatActivity {
     private static String urlJsonAllObj = "http://10.0.2.2:8080/v1/offre";
     private ArrayAdapter adapter;
     Freelance f;
-
-
-
+    JSONObject offre;
     List<String> listContents;
-
-
     Intent tmp;
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -95,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                         for (int i = 0; i < response.length(); i++) {
                             try {
 
-                                JSONObject offre = response.getJSONObject(i);
+                                offre = response.getJSONObject(i);
                                 // Parsing json object response
                                 // response will be a json object
                                 Offre o = new Offre();
@@ -168,8 +167,19 @@ public class MainActivity extends AppCompatActivity {
         myListView.setAdapter(adapter);
         makeJsonObjectRequest();
 
-    }
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                String selectedText = (String) parent.getItemAtPosition(position);
 
+                Intent intent=new Intent(MainActivity.this, OffreView.class);
+                intent.putExtra("offre",selectedText);
+                startActivity(intent);
+
+            }
+        });
+    }
 
     private void onCompte(){
         Intent i=new Intent(MainActivity.this, Compte.class);
