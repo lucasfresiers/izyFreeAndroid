@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -238,8 +239,7 @@ public class Authent extends AppCompatActivity {
 
                                 if (f.getEmail().equals(email.getText().toString())) {
                                     freelanceValide = true;
-                                    intentFrelance.putExtra("email",f.getEmail());
-
+                                    intentFrelance.putExtra("myObject", new Gson().toJson(f));
                                     break;
                                 }
 

@@ -22,6 +22,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
     private String TAG = MainActivity.class.getSimpleName();
     private static String urlJsonAllObj = "http://10.0.2.2:8080/v1/offre";
     private ArrayAdapter adapter;
+    Freelance f;
+
+
 
     List<String> listContents;
 
@@ -140,7 +144,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tmp = getIntent();
+        String jsonMyObject= "";
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            jsonMyObject = extras.getString("myObject");
+        }
+        f = new Gson().fromJson(jsonMyObject,Freelance.class);
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -164,10 +173,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void onCompte(){
         Intent i=new Intent(MainActivity.this, Compte.class);
-        final String nom = i.getStringExtra("nom");
-        final String tel = i.getStringExtra("tel");
-        final String mail = i.getStringExtra("mail");
-        i.putExtras(tmp.getExtras());
+        i.putExtra("myObject", new Gson().toJson(f));
         startActivity(i);
     }
 
