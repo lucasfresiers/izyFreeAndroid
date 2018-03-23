@@ -57,7 +57,7 @@ public class Authent extends AppCompatActivity {
         Intent intent = getIntent();
         intentFrelance = new Intent(this, MainActivity.class);
         final String value = intent.getStringExtra("profil");
-        mdp = findViewById(R.id.mdp);
+        mdp = findViewById(R.id.textMdp);
         email = findViewById(R.id.textEmail);
         connect = findViewById(R.id.connect);
         debug = findViewById(R.id.debug);
@@ -230,11 +230,15 @@ public class Authent extends AppCompatActivity {
                                 if (freelance.has("firstname")) f.setFirstName(freelance.getString("firstname"));
                                 if (freelance.has("job")) f.setJob(freelance.getString("job"));
 
-
-                                if (f.getEmail().equals(email.getText().toString())) {
-                                    freelanceValide = true;
-                                    intentFrelance.putExtra("myObject", new Gson().toJson(f));
-                                    break;
+                                try {
+                                    if (f.getEmail().equals(email.getText().toString()) && "admin".equals(mdp.getText().toString())) {
+                                        freelanceValide = true;
+                                        intentFrelance.putExtra("myObject", new Gson().toJson(f));
+                                        break;
+                                    }
+                                }
+                                 catch (Exception e) {
+                                    e.printStackTrace();
                                 }
 
                             }
