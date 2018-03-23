@@ -9,6 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/*curl -XPOST -H "Content-type: application/json" -d '{"intitule":"dev python", "dateDeb":"01/04/2018", "dateFin":"28/04/2018", "listeMots":"dev?java?projet"}' http://localhost:8080/v1/offre
+*/
+
 public class Offre {
     private int id = 0;
     private String intitule;
