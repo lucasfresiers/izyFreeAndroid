@@ -226,15 +226,9 @@ public class Authent extends AppCompatActivity {
                                 if (freelance.has("id")) f.setId(freelance.getInt("id"));
                                 if (freelance.has("email")) f.setEmail(freelance.getString("email"));
                                 if (freelance.has("name")) f.setName(freelance.getString("name"));
-                                if (freelance.has("tel")) f.setPhone(freelance.getString("tel"));
-
-
-
-                                jsonResponse = "";
-                                jsonResponse += "Name: " + f.getName() + "\n\n";
-                                jsonResponse += "Email: " + f.getEmail() + "\n\n";
-                                jsonResponse += "Home: " + f.getPhone() + "\n\n";
-                                debug.setText(jsonResponse);
+                                if (freelance.has("phone")) f.setPhone(freelance.getString("phone"));
+                                if (freelance.has("firstname")) f.setFirstName(freelance.getString("firstname"));
+                                if (freelance.has("job")) f.setJob(freelance.getString("job"));
 
 
                                 if (f.getEmail().equals(email.getText().toString())) {

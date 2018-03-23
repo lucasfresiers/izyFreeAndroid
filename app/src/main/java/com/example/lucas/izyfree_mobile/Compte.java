@@ -25,6 +25,10 @@ public class Compte extends AppCompatActivity {
         tel.setText(f.getPhone());
         TextView mail = findViewById(R.id.resMail);
         mail.setText(f.getEmail());
+        TextView prenom = findViewById(R.id.resPrenom);
+        prenom.setText(f.getFirstName());
+        TextView poste = findViewById(R.id.resPoste);
+        poste.setText(f.getJob());
     }
 
 }
