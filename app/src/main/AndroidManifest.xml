@@ -30,7 +30,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".Compte" />
         <activity android:name=".CompteEntr" />
-        <activity android:name=".Rechercher"></activity>
+        <activity android:name=".Candidatures"></activity>
     </application>
 
 </manifest>
