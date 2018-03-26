@@ -118,7 +118,7 @@
         app:layout_constraintTop_toBottomOf="@+id/champLibre" />
 
 
-    <TextView
+    <EditText
         android:id="@+id/resNom"
         android:layout_width="130dp"
         android:layout_height="30dp"
@@ -126,11 +126,12 @@
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
         android:text=""
+        android:textSize="11dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/nom"
         app:layout_constraintTop_toBottomOf="@+id/resNomentr" />
 
-    <TextView
+    <EditText
         android:id="@+id/resPrenom"
         android:layout_width="130dp"
         android:layout_height="30dp"
@@ -138,11 +139,12 @@
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
         android:text=""
+        android:textSize="11dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/prenom"
         app:layout_constraintTop_toBottomOf="@+id/resNom" />
 
-    <TextView
+    <EditText
         android:id="@+id/resMail"
         android:layout_width="130dp"
         android:layout_height="30dp"
@@ -150,11 +152,12 @@
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
         android:text=""
+        android:textSize="11dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/email"
         app:layout_constraintTop_toBottomOf="@+id/resPrenom" />
 
-    <TextView
+    <EditText
         android:id="@+id/resTel"
         android:layout_width="130dp"
         android:layout_height="30dp"
@@ -162,6 +165,7 @@
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
         android:text=""
+        android:textSize="11dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tel"
         app:layout_constraintTop_toBottomOf="@+id/resMail" />
@@ -180,7 +184,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <EditText
         android:id="@+id/resNomentr"
         android:layout_width="130dp"
         android:layout_height="30dp"
@@ -188,11 +192,12 @@
         android:layout_marginStart="55dp"
         android:layout_marginTop="80dp"
         android:text=""
+        android:textSize="11dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/nomentr"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <EditText
         android:id="@+id/resFonctions"
         android:layout_width="130dp"
         android:layout_height="30dp"
@@ -200,11 +205,12 @@
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
         android:text=""
+        android:textSize="11dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/nom"
         app:layout_constraintTop_toBottomOf="@+id/resTel" />
 
-    <TextView
+    <EditText
         android:id="@+id/resProfilRecherche"
         android:layout_width="130dp"
         android:layout_height="30dp"
@@ -212,11 +218,12 @@
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
         android:text=""
+        android:textSize="11dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/nom"
         app:layout_constraintTop_toBottomOf="@+id/resFonctions" />
 
-    <TextView
+    <EditText
         android:id="@+id/resVille"
         android:layout_width="130dp"
         android:layout_height="30dp"
@@ -224,11 +231,12 @@
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
         android:text=""
+        android:textSize="11dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/nom"
         app:layout_constraintTop_toBottomOf="@+id/resProfilRecherche" />
 
-    <TextView
+    <EditText
         android:id="@+id/resChampLibre"
         android:layout_width="130dp"
         android:layout_height="30dp"
@@ -236,11 +244,12 @@
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
         android:text=""
+        android:textSize="11dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/nom"
         app:layout_constraintTop_toBottomOf="@+id/resVille" />
 
-    <TextView
+    <EditText
         android:id="@+id/resSearch"
         android:layout_width="130dp"
         android:layout_height="30dp"
@@ -248,6 +257,7 @@
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
         android:text=""
+        android:textSize="11dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/nom"
         app:layout_constraintTop_toBottomOf="@+id/resChampLibre" />

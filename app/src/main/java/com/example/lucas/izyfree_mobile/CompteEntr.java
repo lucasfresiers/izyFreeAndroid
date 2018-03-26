@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -56,6 +57,7 @@ public class CompteEntr extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_compteentr);
         navigation =  findViewById(R.id.navigationEntr);
         intent = new Intent(this, Authent.class);
         super.onCreate(savedInstanceState);
@@ -65,26 +67,26 @@ public class CompteEntr extends AppCompatActivity {
             jsonMyObject = extras.getString("myObject");
         }
         e = new Gson().fromJson(jsonMyObject,Entreprise.class);
-        setContentView(R.layout.activity_compteentr);
-        TextView nomentr = findViewById(R.id.resNomentr);
+
+        EditText nomentr = findViewById(R.id.resNomentr);
         nomentr.setText(e.getName());
-        TextView nom = findViewById(R.id.resNom);
+        EditText nom = findViewById(R.id.resNom);
         nom.setText(e.getNomContact());
-        TextView prenom = findViewById(R.id.resPrenom);
+        EditText prenom = findViewById(R.id.resPrenom);
         prenom.setText(e.getPrenomContact());
-        TextView tel = findViewById(R.id.resTel);
+        EditText tel = findViewById(R.id.resTel);
         tel.setText(e.getTel());
-        TextView mail = findViewById(R.id.resMail);
+        EditText mail = findViewById(R.id.resMail);
         mail.setText(e.getEmail());
-        TextView fonctionsContact = findViewById(R.id.resFonctions);
+        EditText fonctionsContact = findViewById(R.id.resFonctions);
         fonctionsContact.setText(e.getFonctionsContact());
-        TextView profilRecherche = findViewById(R.id.resProfilRecherche);
+        EditText profilRecherche = findViewById(R.id.resProfilRecherche);
         profilRecherche.setText(e.getProfilRecherche());
-        TextView ville = findViewById(R.id.resVille);
+        EditText ville = findViewById(R.id.resVille);
         ville.setText(e.getEmail());
-        TextView champLibre = findViewById(R.id.resChampLibre);
+        EditText champLibre = findViewById(R.id.resChampLibre);
         champLibre.setText(e.getChampLibre());
-        TextView search = findViewById(R.id.resSearch);
+        EditText search = findViewById(R.id.resSearch);
         search.setText(e.getSearch());
 
 
