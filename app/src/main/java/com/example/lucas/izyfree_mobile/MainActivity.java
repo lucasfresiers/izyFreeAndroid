@@ -80,12 +80,6 @@ public class MainActivity extends AppCompatActivity {
 
         showpDialog();
 
-/*        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
-                urlJsonObj, null, new Response.Listener<JSONObject>() {
-
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.d(TAG, response.toString());*/
         JsonArrayRequest req = new JsonArrayRequest(urlJsonAllObj,
                 new Response.Listener<JSONArray>() {
                     @Override
