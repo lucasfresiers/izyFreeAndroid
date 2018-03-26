@@ -19,6 +19,11 @@ public class Entreprise {
     private String passwdHash;
     private String salt;
     private String search;
+    private String fonctionsContact;
+    private String profilRecherche;
+    private String ville;
+    private String champLibre;
+
 
     public Entreprise(int id, String nom) {
         this.id = id;
@@ -125,5 +130,38 @@ public class Entreprise {
     public void setSearch(String search) {
         this.search = search;
     }
+
+    public String getFonctionsContact() {
+        return fonctionsContact;
+    }
+
+    public void setFonctionsContact(String fonctionsContact) {
+        this.fonctionsContact = fonctionsContact;
+    }
+
+    public String getProfilRecherche() {
+        return profilRecherche;
+    }
+
+    public void setProfilRecherche(String profilRecherche) {
+        this.profilRecherche = profilRecherche;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public String getChampLibre() {
+        return champLibre;
+    }
+
+    public void setChampLibre(String champLibre) {
+        this.champLibre = champLibre;
+    }
+
 
 }

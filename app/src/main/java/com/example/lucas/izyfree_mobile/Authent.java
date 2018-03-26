@@ -30,6 +30,7 @@ public class Authent extends AppCompatActivity {
    // Intent intentEntreprise = new Intent(this, MainActivityEntr.class);
 
     Intent intentFrelance;
+    Intent intentEntreprise;
 
 
     // Progress dialog
@@ -55,6 +56,7 @@ public class Authent extends AppCompatActivity {
         setContentView(R.layout.activity_authent);
         Intent intent = getIntent();
         intentFrelance = new Intent(this, MainActivity.class);
+        intentEntreprise = new Intent(this, MainActivityEntr.class);
         final String value = intent.getStringExtra("profil");
         mdp = findViewById(R.id.textMdp);
         email = findViewById(R.id.textEmail);
@@ -154,6 +156,24 @@ public class Authent extends AppCompatActivity {
                                 if (entreprise.has("email")) e.setEmail(entreprise.getString("email"));
                                 if (entreprise.has("nom")) e.setName(entreprise.getString("nom"));
                                 if (entreprise.has("tel")) e.setTel(entreprise.getString("tel"));
+                                if (entreprise.has("nomContact")) e.setNomContact(entreprise.getString("nomContact"));
+                                if (entreprise.has("prenomContact")) e.setPrenomContact(entreprise.getString("prenomContact"));
+                                if (entreprise.has("fonctionsContact")) e.setFonctionsContact(entreprise.getString("fonctionsContact"));
+                                if (entreprise.has("profilRecherche")) e.setProfilRecherche(entreprise.getString("profilRecherche"));
+                                if (entreprise.has("ville")) e.setVille(entreprise.getString("ville"));
+                                if (entreprise.has("champLibre")) e.setChampLibre(entreprise.getString("champLibre"));
+                                if (entreprise.has("search")) e.setSearch(entreprise.getString("search"));
+
+                                try {
+                                    if (e.getEmail().equals(email.getText().toString()) && "admin".equals(mdp.getText().toString())) {
+                                        entrepriseValide = true;
+                                        intentEntreprise.putExtra("myObject", new Gson().toJson(e));
+                                        break;
+                                    }
+                                }
+                                catch (Exception e2) {
+                                    e2.printStackTrace();
+                                }
 
 
 
@@ -288,7 +308,7 @@ public class Authent extends AppCompatActivity {
     }
 
     public void launchWelcomeEntreprise () {
-        //startActivity(intentEntreprise);
+        startActivity(intentEntreprise);
     }
 
     public void launchWelcomeFreelance (){

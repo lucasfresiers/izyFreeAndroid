@@ -34,7 +34,7 @@ public class Candidatures extends AppCompatActivity {
         if(extras!=null){
             jsonMyObject=extras.getString("offre");
         }else{
-            jsonMyObject="kvyufctjcjuy";
+            jsonMyObject="Vous n'avez pas encore de candidature";
         }
 
         String jsonMyObject2="";
@@ -80,14 +80,13 @@ public class Candidatures extends AppCompatActivity {
 
     private void onMain(){
         Intent i=new Intent(Candidatures.this,MainActivity.class);
-        i.putExtra("offre", new Gson().toJson(f));
+        i.putExtra("myObject", new Gson().toJson(f));
         startActivity(i);
     }
 
 
     private void onRechercher() {
         Intent intent = new Intent(this, Candidatures.class);
-        intent.putExtra("myObject", new Gson().toJson(f));
         startActivity(intent);
     }
 }
