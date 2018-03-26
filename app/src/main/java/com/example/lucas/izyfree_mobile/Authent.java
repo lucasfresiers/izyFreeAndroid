@@ -127,26 +127,11 @@ public class Authent extends AppCompatActivity {
                                 catch (Exception e2) {
                                     e2.printStackTrace();
                                 }
-
-
-
-                                jsonResponse = "";
-                                jsonResponse += "Name: " + e.getName() + "\n\n";
-                                jsonResponse += "Email: " + e.getEmail() + "\n\n";
-                                jsonResponse += "Home: " + e.getTel() + "\n\n";
-                                debug.setText(jsonResponse);
-
-
-                                if (e.getEmail().equals(email.getText().toString())) {
-                                    entrepriseValide = true;
-                                    break;
-                                }
-
                             }
                             if (entrepriseValide) {
                                 launchWelcomeEntreprise();
                             } else {
-                                debug.setText("Entreprise inconnu");
+                                Toast.makeText(Authent.this, "Entreprise inconnu", Toast.LENGTH_LONG).show();
                             }
 
 
