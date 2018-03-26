@@ -7,10 +7,10 @@
     tools:context="com.example.lucas.izyfree_mobile.Compte"
     android:background="@color/bg">
 
-    <TextView
+    <EditText
         android:id="@+id/resLocalisation"
         android:layout_width="130dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
@@ -18,12 +18,13 @@
         android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/localisation"
-        app:layout_constraintTop_toBottomOf="@+id/resDispo" />
+        app:layout_constraintTop_toBottomOf="@+id/resDispo"
+        android:textSize="10sp"/>
 
-    <TextView
+    <EditText
         android:id="@+id/resDispo"
         android:layout_width="130dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
@@ -31,12 +32,13 @@
         android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/dispo"
-        app:layout_constraintTop_toBottomOf="@+id/resTarif" />
+        app:layout_constraintTop_toBottomOf="@+id/resTarif"
+        android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/localisation"
         android:layout_width="130dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:text="Localisation"
@@ -46,17 +48,17 @@
     <TextView
         android:id="@+id/dispo"
         android:layout_width="130dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:text="Disponibilité"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tarif" />
 
-    <TextView
+    <EditText
         android:id="@+id/resTarif"
         android:layout_width="130dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
@@ -64,12 +66,13 @@
         android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tarif"
-        app:layout_constraintTop_toBottomOf="@+id/resPoste" />
+        app:layout_constraintTop_toBottomOf="@+id/resPoste"
+        android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/tarif"
         android:layout_width="130dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:text="Tarif"
@@ -79,9 +82,9 @@
     <TextView
         android:id="@+id/nom"
         android:layout_width="130dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="100dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="56dp"
         android:text="Nom"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -89,7 +92,7 @@
     <TextView
         android:id="@+id/prenom"
         android:layout_width="130dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:text="Prénom"
@@ -99,7 +102,7 @@
     <TextView
         android:id="@+id/email"
         android:layout_width="130dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:text="E-mail"
@@ -109,7 +112,7 @@
     <TextView
         android:id="@+id/tel"
         android:layout_width="130dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:text="Téléphone"
@@ -119,72 +122,78 @@
     <TextView
         android:id="@+id/poste"
         android:layout_width="130dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:text="Poste recherché"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tel" />
 
-    <TextView
+    <EditText
         android:id="@+id/resNom"
         android:layout_width="130dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="56dp"
         android:text=""
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toEndOf="@+id/nom"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <EditText
         android:id="@+id/resPrenom"
         android:layout_width="130dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/prenom"
-        app:layout_constraintTop_toBottomOf="@+id/resNom" />
+        app:layout_constraintTop_toBottomOf="@+id/resNom"
+        android:textSize="10sp"/>
 
-    <TextView
+    <EditText
         android:id="@+id/resMail"
         android:layout_width="130dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
         android:text=""
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/email"
         app:layout_constraintTop_toBottomOf="@+id/resPrenom" />
 
-    <TextView
+    <EditText
         android:id="@+id/resTel"
         android:layout_width="130dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tel"
-        app:layout_constraintTop_toBottomOf="@+id/resMail" />
+        app:layout_constraintTop_toBottomOf="@+id/resMail"
+        android:textSize="10sp"/>
 
-    <TextView
+    <EditText
         android:id="@+id/resPoste"
         android:layout_width="130dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="55dp"
         android:layout_marginTop="8dp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/poste"
-        app:layout_constraintTop_toBottomOf="@+id/resTel" />
+        app:layout_constraintTop_toBottomOf="@+id/resTel"
+        android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/compte"
@@ -192,7 +201,7 @@
         android:layout_height="31dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Mon compte"
         android:textAlignment="center"
         android:textSize="20dp"
