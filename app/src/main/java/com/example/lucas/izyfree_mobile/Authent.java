@@ -230,6 +230,7 @@ public class Authent extends AppCompatActivity {
                                 if (freelance.has("firstname")) f.setFirstName(freelance.getString("firstname"));
                                 if (freelance.has("job")) f.setJob(freelance.getString("job"));
 
+
                                 try {
                                     if (f.getEmail().equals(email.getText().toString()) && "admin".equals(mdp.getText().toString())) {
                                         freelanceValide = true;
