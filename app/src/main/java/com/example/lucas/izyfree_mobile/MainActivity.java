@@ -37,6 +37,8 @@ import java.util.HashMap;
 import java.util.List;
 /*
 curl -XPOST -H "Content-type: application/json" -d '{"name":"a","nomContact":"b","prenomContact":"c","password":"d","tel":"e","email":"f","id":"1","photo":"g"}' http://localhost:8080/v1/entreprise
+curl -XPUT -i -H "Content-type: application/json" -d '{"conditions":"A distance","email":"jean@pierre.com","firstname":"Pierroooh","id":1,"job":"Developpeur Java","localisation":"Lille","mots":"papa?maman","name":"Jean","phone":"06 12 34 56 78","tarif":"300/jour"}' http://localhost:8080/v1/freelance/id/1
+
 curl -i -X DELETE http://localhost:8080/v1/entreprise/6
 
 

@@ -291,7 +291,6 @@ public class Authent extends AppCompatActivity {
                 hidepDialog();
             }
         });
-
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(req);
     }
