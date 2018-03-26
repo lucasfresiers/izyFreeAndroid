@@ -92,15 +92,19 @@ public class Compte extends AppCompatActivity {
 
         f = new Gson().fromJson(jsonMyObject,Freelance.class);
 
+        try {
+            nom.setText(f.getName());
+            tel.setText(f.getPhone()+"");
+            mail.setText(f.getEmail());
+            prenom.setText(f.getFirstName());
+            poste.setText(f.getJob());
+            tarif.setText(f.getTarif());
+            dispo.setText(f.getConditions());
+            localisation.setText(f.getLocalisation());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        nom.setText(f.getName());
-        tel.setText(f.getPhone()+"");
-        mail.setText(f.getEmail());
-        prenom.setText(f.getFirstName());
-        poste.setText(f.getJob());
-        tarif.setText(f.getTarif());
-        dispo.setText(f.getConditions());
-        localisation.setText(f.getLocalisation());
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -133,6 +137,7 @@ public class Compte extends AppCompatActivity {
 
     private void onRechercher() {
         Intent intent = new Intent(this, Candidatures.class);
+        intent.putExtra("myObject", new Gson().toJson(f));
         startActivity(intent);
     }
     private void onMain() {

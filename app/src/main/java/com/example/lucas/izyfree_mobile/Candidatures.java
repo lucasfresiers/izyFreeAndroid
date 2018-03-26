@@ -87,6 +87,7 @@ public class Candidatures extends AppCompatActivity {
 
     private void onRechercher() {
         Intent intent = new Intent(this, Candidatures.class);
+        intent.putExtra("myObject", new Gson().toJson(f));
         startActivity(intent);
     }
 }
