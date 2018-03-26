@@ -46,7 +46,6 @@ public class Authent extends AppCompatActivity {
     private String jsonResponse;
     // json object response url
 
-    private String urlJsonObj = "http://10.0.2.2:8080/v1/entreprise/";
     private String urlJsonAllEntreprise = "http://10.0.2.2:8080/v1/entreprise/";
     private String urlJsonAllFreelance = "http://10.0.2.2:8080/v1/freelance/";
 
@@ -82,55 +81,6 @@ public class Authent extends AppCompatActivity {
         });
     }
 
-
-    /**
-     * Method to make json object request where json response starts wtih {
-     */
-    private void makeJsonObjectRequest() {
-
-        showpDialog();
-
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
-                urlJsonObj, null, new Response.Listener<JSONObject>() {
-
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.d(TAG, response.toString());
-
-                try {
-                    // Parsing json object response
-                    // response will be a json object
-                    String name = response.getString("nom");
-                    String email = response.getString("email");
-                    String tel = response.getString("tel");
-
-
-                    mdp.setText(jsonResponse);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(),
-                            "Error: " + e.getMessage(),
-                            Toast.LENGTH_LONG).show();
-                }
-                hidepDialog();
-            }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_SHORT).show();
-                // hide the progress dialog
-                hidepDialog();
-            }
-        });
-
-        // Adding request to request queue
-        AppController a = AppController.getInstance();
-        a.addToRequestQueue(jsonObjReq);
-    }
 
     private void makeJsonArrayRequestEntreprise() {
 
