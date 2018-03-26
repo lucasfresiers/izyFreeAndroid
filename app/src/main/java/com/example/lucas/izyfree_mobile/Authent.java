@@ -35,7 +35,6 @@ public class Authent extends AppCompatActivity {
     // Progress dialog
     private ProgressDialog pDialog;
     private Button connect;
-
     TextView mdp;
     TextView email;
     TextView debug;
@@ -229,6 +228,9 @@ public class Authent extends AppCompatActivity {
                                 if (freelance.has("phone")) f.setPhone(freelance.getString("phone"));
                                 if (freelance.has("firstname")) f.setFirstName(freelance.getString("firstname"));
                                 if (freelance.has("job")) f.setJob(freelance.getString("job"));
+                                if (freelance.has("tarif")) f.setTarif(freelance.getString("tarif"));
+                                if (freelance.has("localisation")) f.setLocalisation(freelance.getString("localisation"));
+                                if (freelance.has("conditions")) f.setConditions(freelance.getString("conditions"));
 
 
                                 try {

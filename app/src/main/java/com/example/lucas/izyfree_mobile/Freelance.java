@@ -25,6 +25,36 @@ public class Freelance {
         private String salt;
         private String search;
 
+    public String getTarif() {
+        return tarif;
+    }
+
+    public void setTarif(String tarif) {
+        this.tarif = tarif;
+    }
+
+    public String getLocalisation() {
+        return localisation;
+    }
+
+    public void setLocalisation(String localisation) {
+        this.localisation = localisation;
+    }
+
+    private String tarif;
+        private String localisation;
+    private String conditions;
+
+    public String getConditions() {
+        return conditions;
+    }
+
+    public void setConditions(String conditions) {
+        this.conditions = conditions;
+    }
+
+
+
         public Freelance(int id, String name) {
             this.id = id;
             this.name = name;

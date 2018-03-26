@@ -33,6 +33,15 @@ public class Compte extends AppCompatActivity {
         prenom.setText(f.getFirstName());
         TextView poste = findViewById(R.id.resPoste);
         poste.setText(f.getJob());
+        TextView tarif = findViewById(R.id.resTarif);
+        tarif.setText(f.getTarif());
+        TextView dispo = findViewById(R.id.resDispo);
+        dispo.setText(f.getConditions());
+        TextView localisation = findViewById(R.id.resLocalisation);
+        localisation.setText(f.getLocalisation());
+
+
+
 
         Button angryButton =  findViewById(R.id.angry_btn);
         angryButton.setOnClickListener(new View.OnClickListener() {
