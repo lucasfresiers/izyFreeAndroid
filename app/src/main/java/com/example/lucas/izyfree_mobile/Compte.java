@@ -72,6 +72,15 @@ public class Compte extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_compte);
+        localisation = findViewById(R.id.resLocalisation);
+        intent = new Intent(this, Authent.class);
+        super.onCreate(savedInstanceState);
+        String jsonMyObject= "";
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            jsonMyObject = extras.getString("myObject");
+        }
         nom = findViewById(R.id.resNom);
         navigation =  findViewById(R.id.navigation);
         tel = findViewById(R.id.resTel);
@@ -80,19 +89,12 @@ public class Compte extends AppCompatActivity {
         poste = findViewById(R.id.resPoste);
         tarif = findViewById(R.id.resTarif);
         dispo = findViewById(R.id.resDispo);
-        localisation = findViewById(R.id.resLocalisation);
 
-        intent = new Intent(this, Authent.class);
-        super.onCreate(savedInstanceState);
-        String jsonMyObject= "";
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            jsonMyObject = extras.getString("myObject");
-        }
         f = new Gson().fromJson(jsonMyObject,Freelance.class);
-        setContentView(R.layout.activity_compte);
+
+
         nom.setText(f.getName());
-        tel.setText(f.getPhone());
+        tel.setText(f.getPhone()+"");
         mail.setText(f.getEmail());
         prenom.setText(f.getFirstName());
         poste.setText(f.getJob());
@@ -104,11 +106,19 @@ public class Compte extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
 
-        Button angryButton =  findViewById(R.id.angry_btn);
-        angryButton.setOnClickListener(new View.OnClickListener() {
+        Button modif =  findViewById(R.id.modif);
+        modif.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 updateInfos();
                 //startActivity(intent);
+            }
+        });
+
+        Button deco =  findViewById(R.id.deco);
+        deco.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(Compte.this,Welcome.class);
+                startActivity(intent);
             }
         });
 
@@ -148,37 +158,42 @@ public class Compte extends AppCompatActivity {
         params.put("localisation", localisation.getText().toString());
         params.put("conditions", dispo.getText().toString());
 
-        nom.setText(f.getName());
-        f.setName(nom.getText().toString());
-        tel.setText(f.getPhone());
-        f.setPhone(tel.getText().toString());
-        mail.setText(f.getEmail());
-        f.setEmail(mail.getText().toString());
-        prenom.setText(f.getFirstName());
-        f.setFirstName(prenom.getText().toString());
-        poste.setText(f.getJob());
-        f.setJob(poste.getText().toString());
-        tarif.setText(f.getTarif());
-        f.setTarif(tarif.getText().toString());
-        dispo.setText(f.getConditions());
-        f.setConditions(dispo.getText().toString());
-        localisation.setText(f.getLocalisation());
-        f.setLocalisation(dispo.getText().toString());
 
         JsonObjectRequest jsonobj = new JsonObjectRequest(Request.Method.PUT, urlPut, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         // response
-                        Toast.makeText(Compte.this,"OK CA MARCHE",Toast.LENGTH_LONG).show();
+                        Toast.makeText(Compte.this, "OK CA MARCHE", Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Compte.this,"NON CA MARCHE PAS",Toast.LENGTH_LONG).show();
+                Toast.makeText(Compte.this, "NON CA MARCHE PAS", Toast.LENGTH_LONG).show();
             }
         });
         queue.add(jsonobj);
+
+
+
+        f.setName(nom.getText().toString());
+        nom.setText(f.getName());
+        f.setPhone(tel.getText().toString());
+        tel.setText(f.getPhone());
+        f.setEmail(mail.getText().toString());
+        mail.setText(f.getEmail());
+        f.setFirstName(prenom.getText().toString());
+        prenom.setText(f.getFirstName());
+        f.setJob(poste.getText().toString());
+        poste.setText(f.getJob());
+        f.setTarif(tarif.getText().toString());
+        tarif.setText(f.getTarif());
+        f.setConditions(dispo.getText().toString());
+        dispo.setText(f.getConditions());
+        f.setLocalisation(localisation.getText().toString());
+        localisation.setText(f.getLocalisation());
+
     }
+
 
 }

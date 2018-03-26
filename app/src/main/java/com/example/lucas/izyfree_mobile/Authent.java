@@ -61,7 +61,6 @@ public class Authent extends AppCompatActivity {
         mdp = findViewById(R.id.textMdp);
         email = findViewById(R.id.textEmail);
         connect = findViewById(R.id.connect);
-        debug = findViewById(R.id.debug);
 
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Please wait...");
@@ -73,8 +72,12 @@ public class Authent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // making json object request
-                if (value.equals("entreprise")) makeJsonArrayRequestEntreprise();
-                if (value.equals("freelance")) makeJsonArrayRequestFreelance();
+                try {
+                    if (value.equals("entreprise")) makeJsonArrayRequestEntreprise();
+                    if (value.equals("freelance")) makeJsonArrayRequestFreelance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -269,7 +272,7 @@ public class Authent extends AppCompatActivity {
 
                                 launchWelcomeFreelance();
                             } else {
-                                debug.setText("Freelance inconnu");
+                                Toast.makeText(Authent.this, "Freelance inconnu", Toast.LENGTH_LONG).show();
                             }
 
 

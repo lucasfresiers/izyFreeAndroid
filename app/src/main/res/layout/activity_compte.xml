@@ -7,6 +7,22 @@
     tools:context="com.example.lucas.izyfree_mobile.Compte"
     android:background="@color/bg">
 
+    <Button
+        android:id="@+id/deco"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/buttonshape"
+        android:text="Deco"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compte"
+        app:layout_constraintVertical_bias="0.852" />
+
     <EditText
         android:id="@+id/resLocalisation"
         android:layout_width="130dp"
@@ -211,22 +227,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/angry_btn"
-        android:layout_width="270dp"
+        android:id="@+id/modif"
+        android:layout_width="150dp"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/buttonshape"
-        android:text="Déconnexion"
+        android:background="@drawable/buttonshape2"
+        android:text="Modifier"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/compte"
-        app:layout_constraintVertical_bias="0.85" />
+        app:layout_constraintVertical_bias="0.852" />
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="0dp"
