@@ -41,7 +41,7 @@ public class MainActivityEntr extends AppCompatActivity {
     private ListView mListView;
     private String jsonResponse;
     private String TAG = MainActivity.class.getSimpleName();
-    private static String urlJsonAllObj = "http://10.0.2.2:8080/v1/freelance";
+    private static String urlJsonAllObj = "http://5.135.83.124/v1/freelance";
     private ArrayAdapter adapter;
     Entreprise e;
     JSONObject freelance;

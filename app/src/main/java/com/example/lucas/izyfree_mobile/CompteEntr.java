@@ -36,7 +36,7 @@ public class CompteEntr extends AppCompatActivity {
     Entreprise e;
     Intent intent;
     BottomNavigationView navigation;
-    private String urlPut = "http://10.0.2.2:8080/v1/entreprise/id/1";
+    private String urlPut;
     String response = "";
     EditText nomentr;
     EditText nom;
@@ -132,7 +132,7 @@ public class CompteEntr extends AppCompatActivity {
                 //startActivity(intent);
             }
         });*/
-
+        urlPut = "http://5.135.83.124/v1/entreprise/id/"+e.getId();
 
     }
 
