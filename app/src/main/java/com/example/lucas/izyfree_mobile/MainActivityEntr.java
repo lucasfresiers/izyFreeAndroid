@@ -55,9 +55,6 @@ public class MainActivityEntr extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigationEntr_home:
                     return true;
-                case R.id.navigationEntr_rechercher:
-                    // onRechercherEntr();
-                    return true;
                 case R.id.navigationEntr_compte:
                     onCompteEntr();
                     return true;
@@ -152,18 +149,18 @@ public class MainActivityEntr extends AppCompatActivity {
         myListView.setAdapter(adapter);
         makeJsonObjectRequest();
 
-        /*myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 String selectedText = (String) parent.getItemAtPosition(position);
 
-                Intent intent=new Intent(MainActivityEntr.this, OffreView.class);
+                Intent intent=new Intent(MainActivityEntr.this, CandidatView.class);
                 intent.putExtra("candidat",selectedText);
                 startActivity(intent);
 
             }
-        });*/
+        });
     }
 
 
