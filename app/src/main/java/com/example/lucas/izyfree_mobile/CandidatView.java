@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 /**
  * Created by bertins on 27/03/18.
  */
@@ -18,7 +20,7 @@ public class CandidatView extends AppCompatActivity {
 
     AlertDialog.Builder builder;
     TextView tv;
-
+    Entreprise e;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,14 @@ public class CandidatView extends AppCompatActivity {
         if (extras != null) {
             jsonMyObject = extras.getString("candidat");
         }
+
+        String jsonMyObject2 = "";
+        Bundle extras2 = getIntent().getExtras();
+        if (extras2 != null) {
+            jsonMyObject2 = extras2.getString("myObject");
+        }
+
+        e = new Gson().fromJson(jsonMyObject2,Entreprise.class);
         tv = (TextView) findViewById(R.id.candidatview);
         tv.setText(jsonMyObject);
 
@@ -45,6 +55,7 @@ public class CandidatView extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         Intent intent = new Intent(CandidatView.this, MainActivityEntr.class);
                         intent.putExtra("candidat", tv.getText());
+                        intent.putExtra("myObject", new Gson().toJson(e));
                         startActivity(intent);
                     }
                 })

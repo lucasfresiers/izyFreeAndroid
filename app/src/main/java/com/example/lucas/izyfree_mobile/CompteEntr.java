@@ -142,11 +142,6 @@ public class CompteEntr extends AppCompatActivity {
         startActivity(i);
     }
 
-    private void onRechercher() {
-        Intent intent = new Intent(this, Candidatures.class);
-        startActivity(intent);
-    }
-
     private void onMain(){
         Intent intent=new Intent(this, MainActivityEntr.class);
         intent.putExtra("myObject", new Gson().toJson(e));

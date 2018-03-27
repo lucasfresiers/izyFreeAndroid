@@ -157,6 +157,7 @@ public class MainActivityEntr extends AppCompatActivity {
 
                 Intent intent=new Intent(MainActivityEntr.this, CandidatView.class);
                 intent.putExtra("candidat",selectedText);
+                intent.putExtra("myObject", new Gson().toJson(e));
                 startActivity(intent);
 
             }
