@@ -34,6 +34,7 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 public class Compte extends AppCompatActivity {
     Freelance f;
@@ -105,7 +106,12 @@ public class Compte extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        urlPut = "http://5.135.83.124/v1/freelance/id/"+f.getId();
+        try {
+            urlPut = "http://5.135.83.124/v1/freelance/id/"+f.getId();
+        }
+       catch (Exception e) {
+            e.printStackTrace();
+       }
 
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -120,18 +126,19 @@ public class Compte extends AppCompatActivity {
             }
         });
 
-        Button deco =  findViewById(R.id.deco);
-        deco.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(Compte.this,Welcome.class);
-                startActivity(intent);
-            }
-        });
+
 
         intent = getIntent();
         final String value = intent.getStringExtra("profil");
         v = value;
-
+        Button deco =  findViewById(R.id.deco);
+        deco.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(Compte.this,Welcome.class);
+                i.putExtra("profil",""+v);
+                startActivity(i);
+            }
+        });
 
     }
 
@@ -146,11 +153,12 @@ public class Compte extends AppCompatActivity {
         Intent intent = new Intent(this, Candidatures.class);
         intent.putExtra("myObject", new Gson().toJson(f));
         intent.putExtra("profil",v);
-        startActivity(intent);
+        //startActivity(intent);
     }
     private void onMain() {
         Intent i = new Intent(this, MainActivity.class);
         i.putExtra("myObject", new Gson().toJson(f));
+        i.putExtra("profil",v);
         startActivity(i);
     }
 

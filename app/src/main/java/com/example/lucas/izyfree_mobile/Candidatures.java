@@ -29,26 +29,31 @@ public class Candidatures extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        String jsonMyObject="";
-        Bundle extras=getIntent().getExtras();
-        if(extras!=null){
-            jsonMyObject=extras.getString("offre");
-        }else{
-            jsonMyObject="Vous n'avez pas encore de candidature";
+        try {
+            String jsonMyObject="";
+            Bundle extras=getIntent().getExtras();
+            if(extras!=null){
+                jsonMyObject=extras.getString("offre");
+            }else{
+                jsonMyObject="Vous n'avez pas encore de candidature";
+            }
+
+            String jsonMyObject2="";
+            Bundle extras2=getIntent().getExtras();
+            if(extras2!=null){
+                jsonMyObject2=extras2.getString("myObject");
+            }
+            f = new Gson().fromJson(jsonMyObject2,Freelance.class);
+
+            ListView myListView = (ListView) findViewById(R.id.candidature);
+            listContents = new ArrayList<String>();
+            adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listContents);
+            myListView.setAdapter(adapter);
+            adapter.add(jsonMyObject);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        String jsonMyObject2="";
-        Bundle extras2=getIntent().getExtras();
-        if(extras2!=null){
-            jsonMyObject2=extras2.getString("myObject");
-        }
-        f = new Gson().fromJson(jsonMyObject2,Freelance.class);
-
-        ListView myListView = (ListView) findViewById(R.id.candidature);
-        listContents = new ArrayList<String>();
-        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listContents);
-        myListView.setAdapter(adapter);
-        adapter.add(jsonMyObject);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -88,6 +93,6 @@ public class Candidatures extends AppCompatActivity {
     private void onRechercher() {
         Intent intent = new Intent(this, Candidatures.class);
         intent.putExtra("myObject", new Gson().toJson(f));
-        startActivity(intent);
+        //startActivity(intent);
     }
 }

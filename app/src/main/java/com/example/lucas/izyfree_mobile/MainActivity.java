@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Candidatures.class);
         intent.putExtra("myObject", new Gson().toJson(f));
         intent.putExtra("profil",v);
-        startActivity(intent);
+        //startActivity(intent);
     }
 
 
