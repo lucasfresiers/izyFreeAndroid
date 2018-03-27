@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView mListView;
     private String jsonResponse;
     private String TAG = MainActivity.class.getSimpleName();
-    private static String urlJsonAllObj = "http://10.0.2.2:8080/v1/offre";
+    private static String urlJsonAllObj = "http://5.135.83.124/v1/offre";
     private ArrayAdapter adapter;
     Freelance f;
     JSONObject offre;
