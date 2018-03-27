@@ -39,7 +39,7 @@ public class Compte extends AppCompatActivity {
     Freelance f;
     Intent intent;
     BottomNavigationView navigation;
-    private String urlPut = "http://10.0.2.2:8080/v1/freelance/id/1";
+    private String urlPut;
     String response = "";
     EditText nom;
     EditText tel;
@@ -104,6 +104,7 @@ public class Compte extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        urlPut = "http://5.135.83.124/v1/freelance/id/"+f.getId();
 
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
