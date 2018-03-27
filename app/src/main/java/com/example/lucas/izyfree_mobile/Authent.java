@@ -46,8 +46,8 @@ public class Authent extends AppCompatActivity {
     private String jsonResponse;
     // json object response url
 
-    private String urlJsonAllEntreprise = "http://10.0.2.2:8080/v1/entreprise/";
-    private String urlJsonAllFreelance = "http://10.0.2.2:8080/v1/freelance/";
+    private String urlJsonAllEntreprise = "http://5.135.83.124/v1/entreprise/";
+    private String urlJsonAllFreelance = "http://5.135.83.124/v1/freelance/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
