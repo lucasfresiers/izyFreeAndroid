@@ -245,10 +245,12 @@ public class Authent extends AppCompatActivity {
     }
 
     public void launchWelcomeEntreprise () {
+        intentEntreprise.putExtra("profil", "entreprise");
         startActivity(intentEntreprise);
     }
 
     public void launchWelcomeFreelance (){
+        intentFrelance.putExtra("profil", "freelance");
         startActivity(intentFrelance);
     }
 }

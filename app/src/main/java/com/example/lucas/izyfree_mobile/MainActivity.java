@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     JSONObject offre;
     List<String> listContents;
     Intent tmp;
+    Intent intent;
+    String v;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -175,17 +177,26 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+        intent = getIntent();
+        final String value = intent.getStringExtra("profil");
+        v = value;
+
     }
 
     private void onCompte(){
         Intent i=new Intent(MainActivity.this, Compte.class);
         i.putExtra("myObject", new Gson().toJson(f));
+        i.putExtra("profil",v);
         startActivity(i);
     }
 
 
     private void onRechercher() {
         Intent intent = new Intent(this, Candidatures.class);
+        intent.putExtra("myObject", new Gson().toJson(f));
+        intent.putExtra("profil",v);
         startActivity(intent);
     }
 

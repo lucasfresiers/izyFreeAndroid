@@ -37,7 +37,6 @@ import java.util.Map;
 
 public class Compte extends AppCompatActivity {
     Freelance f;
-    Intent intent;
     BottomNavigationView navigation;
     private String urlPut;
     String response = "";
@@ -49,6 +48,8 @@ public class Compte extends AppCompatActivity {
     EditText tarif;
     EditText dispo;
     EditText localisation;
+    Intent intent;
+    String v;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -127,18 +128,24 @@ public class Compte extends AppCompatActivity {
             }
         });
 
+        intent = getIntent();
+        final String value = intent.getStringExtra("profil");
+        v = value;
+
 
     }
 
     private void onCompte(){
         Intent i=new Intent(this, Compte.class);
         i.putExtra("myObject", new Gson().toJson(f));
+        i.putExtra("profil",v);
         startActivity(i);
     }
 
     private void onRechercher() {
         Intent intent = new Intent(this, Candidatures.class);
         intent.putExtra("myObject", new Gson().toJson(f));
+        intent.putExtra("profil",v);
         startActivity(intent);
     }
     private void onMain() {
